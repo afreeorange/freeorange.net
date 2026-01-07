@@ -1,0 +1,10 @@
+/* TEAM */
+	Author: Nikhil Anand
+	Contact: mail [at] nikhil.io
+	Instagram: @afreeorange
+	From: Des Moines, Iowa, USA
+
+/* SITE */
+	Last update: 2025-08-23T14:34:06.243-05:00
+	Language: English
+	Software: S/CSS, HTML, Node
