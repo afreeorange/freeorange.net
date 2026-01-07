@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+pnpm check
 pnpm build
 
 aws s3 sync dist/ s3://freeorange.net/ --delete

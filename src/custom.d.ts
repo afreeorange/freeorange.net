@@ -10,7 +10,8 @@ declare module "preact" {
     // }
 
     interface IntrinsicElements {
-      "main-wrapper": HTMLAttributes<HTMLElement>;
+      "content-top": HTMLAttributes<HTMLElement>;
+      "content-bottom": HTMLAttributes<HTMLElement>;
     }
   }
 }
