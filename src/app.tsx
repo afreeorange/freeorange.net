@@ -12,7 +12,7 @@ const App = () => (
         </span>
       </p>
       <p>
-        <a href="mailto:hello@freeorange.net" title={"Hello!"}>
+        <a href="mailto:hello@freeorange.net" title={"Email me!"}>
           Say hello!
         </a>
       </p>

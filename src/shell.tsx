@@ -18,6 +18,7 @@ const Shell = ({ children }: { children?: ComponentChildren }) => (
   <html lang="en-US">
     <head>
       <meta charset="UTF-8" />
+
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <meta name="view-transition" content="same-origin" />
       <meta name="version" content={packageJson.version} />
@@ -56,7 +57,7 @@ const Shell = ({ children }: { children?: ComponentChildren }) => (
       />
     </head>
     <body>
-      <div className="container">{children}</div>
+      <div id="container">{children}</div>
     </body>
   </html>
 );

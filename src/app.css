@@ -27,15 +27,16 @@ body {
 }
 
 main {
-  @apply flex items-center opacity-95 px-8 md:px-16 py-4 h-full;
+  @apply flex items-center p-4 md:px-16 py-4 h-full;
 
-  section {
+  main-wrapper {
     @apply mx-auto md:max-w-5xl;
   }
 
   h1 {
     @apply font-bold text-orange-500 text-6xl md:text-8xl;
     font-family: "Open Gorton";
+
     --lines: 2px;
     mask: repeating-radial-gradient(
       circle at 2.65rem 8.75rem,
@@ -59,7 +60,7 @@ main {
   }
 
   p {
-    @apply mt-12 text-orange-500 text-4xl md:text-5xl leading-14 md:leading-20 tracking-wider;
+    @apply my-6 md:my-12 text-orange-500 text-4xl md:text-5xl leading-14 md:leading-20 tracking-wider;
     font-family: "Open Gorton";
 
     > span {
@@ -71,12 +72,15 @@ main {
     }
   }
 
-  img[alt^="Iowa"] {
-    @apply inline -left-4 relative w-14 md:w-18;
-  }
-
-  img[alt^="New York City"] {
-    @apply inline md:bottom-0.5 -left-4 relative w-14 md:w-16;
+  a {
+    &::before {
+      @apply inline bg-current mr-6 mb-8 w-96 h-72 text-orange-500;
+      content: "\0a0";
+      mask-image: url(/envelope.svg);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: cover;
+    }
   }
 }
 
