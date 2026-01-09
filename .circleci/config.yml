@@ -1,59 +1,75 @@
-version: '2.1'
+version: 2.1
+
 orbs:
-  node: circleci/node@7.2.1
-  aws-s3: circleci/aws-s3@4
-  aws-cli: circleci/aws-cli@5.4.1
-workflows:
-  build-project:
-    jobs:
-      - node/run:
-          executor:
-            name: node/default
-          pnpm-run: build
-  sync-to-s3:
-    jobs:
+  # https://circleci.com/developer/orbs/orb/circleci/aws-s3
+  aws-s3: circleci/aws-s3@3
+
+jobs:
+  deploy-job:
+    docker:
+      # This is their "Next Generation" image
+      # https://circleci.com/developer/images/image/cimg/node
+      - image: cimg/node:24.2.0
+
+    steps:
+      # https://pnpm.io/continuous-integration#circleci
+      - checkout
+      - restore_cache:
+          name: Restoring package cache
+          keys:
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+
+      - run:
+          name: Install pnpm package manager
+          command: |
+            sudo corepack enable
+            sudo COREPACK_INTEGRITY_KEYS=0 corepack prepare --activate
+            pnpm config set store-dir .pnpm-store
+
+      - run:
+          name: Install Dependencies
+          command: |
+            pnpm install
+
+      - save_cache:
+          name: Saving Package Cache
+          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - .pnpm-store
+
+      # ----------------------- Start Tasks -----------------------
+
+      - run:
+          name: Building the site
+          command: pnpm build
+
       - aws-s3/sync:
           aws-region: AWS_DEFAULT_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          from: dist/
-          to: s3://freeorange.net/
+          from: build/
+          to: "s3://freeorange.net/"
           arguments: |
             --delete
-    invalidate-cloudfront:
-      executor: aws-cli/default
-      jobs:
-        - run:
-            name: Invalidating CloudFront distribution (freeorange.net)
-            command: |
-              aws cloudfront create-invalidation \
-                --distribution-id "${CLOUDFRONT_FREEORANGE_NET}" \
-                --paths '/*'
 
+      - run:
+          name: Invalidating CloudFront distribution (freeorange.net)
+          command: |
+            aws cloudfront create-invalidation \
+              --distribution-id "${CLOUDFRONT_FREEORANGE_NET}" \
+              --paths '/*'
 
-# workflows:
-#   test_my_app:
-#     jobs:
-#       - build-and-deploy
+      # - run:
+      #     name: Notifying
+      #     command: |
+      #       echo "Finished nikhil.io" | mail 5157082866@vtext.com
 
-# # Orchestrate jobs using workflows
-# # See: https://circleci.com/docs/guides/orchestrate/workflows/
-# # https://circleci.com/docs/reference/configuration-reference/#workflows
-# #
-# # workflows:
-# #   main:
-# #     jobs:
-# #       - node:
-# #           post-steps:
-# #             - run: pnpm run build
-# #             - aws-s3/sync:
-# #                 from: dist/
-# #                 to: s3://freeorange.net/
-# #                 arguments: |
-# #                   --delete
-# #             - run:
-# #                 name: Invalidating CloudFront distribution (freeorange.net)
-# #                 command: |
-# #                   aws cloudfront create-invalidation \
-# #                     --distribution-id "${CLOUDFRONT_FREEORANGE_NET}" \
-# #                     --paths '/*'
+workflows:
+  main:
+    jobs:
+      - deploy-job:
+          # Don't care about running the above for anything other than pushes
+          # to the master branch 🤷‍♂️
+          filters:
+            branches:
+              only: master
