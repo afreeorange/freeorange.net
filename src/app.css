@@ -72,10 +72,12 @@ main p {
 footer {
   @apply text-sky-300 text-3xl leading-10 md:leading-12 tracking-widest;
 
-  p::before {
-    @apply inline bg-current mr-4 mb-8 w-96 h-72 text-orange-500 mask-center mask-no-repeat mask-cover;
+  p::after {
+    @apply inline-block bg-current ml-2 w-10 h-10 text-orange-500 mask-center mask-no-repeat mask-cover;
     content: "\0a0";
     mask-image: url(/eyehand.svg);
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
   }
 
   a {
