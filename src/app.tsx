@@ -11,7 +11,7 @@ const App = () => (
           Is a boutique <strong>full-stack consultancy</strong> based in{" "}
           <strong>Des Moines</strong>{" "}
           <span>
-            &amp; <strong>NYC</strong>
+            &amp; <strong>NYC</strong>.
           </span>
         </p>
       </main>
@@ -19,7 +19,10 @@ const App = () => (
     <content-bottom>
       <footer>
         <p>
-          <a href="mailto:hello@freeorange.net" title={"Email me!"}>
+          <a
+            href="mailto:hello@freeorange.net?subject=Hi there!"
+            title={"Email me!"}
+          >
             Say hello
           </a>
         </p>
