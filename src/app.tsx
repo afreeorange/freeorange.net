@@ -9,10 +9,7 @@ const App = () => (
       <main>
         <p>
           Is a boutique <strong>full-stack consultancy</strong> based in{" "}
-          <strong>Des Moines</strong>{" "}
-          <span>
-            &amp; <strong>NYC</strong>.
-          </span>
+          <strong>Des Moines</strong>
         </p>
       </main>
     </content-top>
