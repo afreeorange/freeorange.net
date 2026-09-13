@@ -35,17 +35,10 @@ const Shell = ({ children }: { children?: ComponentChildren }) => (
       <meta property="og:url" content={URI} />
       <meta property="og:locale" content="en_US" />
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:description" content={DESCRIPTION} />
-      <meta name="twitter:image" content="/og-image.png" />
-      <meta name="twitter:title" content={TITLE} />
-      <meta property="twitter:domain" content={DOMAIN} />
-      <meta property="twitter:url" content={URI} />
-
       <title dangerouslySetInnerHTML={{ __html: TITLE }} />
 
       <link rel="apple-touch-icon" type="image/png" href="/favicon.png" />
-      <link rel="icon" type="image/png" href="/favicon.png" />
+      <link rel="icon" type="image/svg" href="/favicon.svg" />
       <link rel="stylesheet" href="/index.css" />
       <link rel="canonical" href={URI} />
 
