@@ -1,15 +1,22 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Open Gorton";
-  src: url("/OpenGorton-Regular.woff2") format("woff2");
+  font-family: "Averta_";
+  src: url("/averta-regular-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Open Gorton";
-  src: url("/OpenGorton-Bold.woff2") format("woff2");
+  font-family: "Averta_";
+  src: url("/averta-thin-webfont.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Averta_";
+  src: url("/averta-bold-webfont.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
 }
@@ -17,14 +24,15 @@
 html,
 body {
   @apply h-full overflow-auto;
+  background: #1b1b1b;
   font-family:
-    "Open Gorton", ui-rounded, "Hiragino Maru Gothic ProN", Quicksand,
-    Comfortaa, Manjari, "Arial Rounded MT", "Arial Rounded MT Bold", Calibri,
+    "Averta_", ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa,
+    Manjari, "Arial Rounded MT", "Arial Rounded MT Bold", Calibri,
     source-sans-pro, sans-serif;
 }
 
 #container {
-  @apply flex flex-col justify-between p-10 md:p-40 h-full;
+  @apply flex flex-col justify-between p-10 md:p-20 xl:p-40 h-full;
 
   &::before {
     @apply top-0 left-0 -z-10 absolute opacity-4 w-screen h-screen;
@@ -33,62 +41,74 @@ body {
   }
 }
 
+header {
+  h1 {
+    @apply pb-1 font-bold text-orange-500 text-5xl;
+
+    span:nth-of-type(1) {
+      @apply block ml-1 font-normal [word-spacing:-0.5rem] md:[word-spacing:-0.5rem];
+    }
+
+    span:nth-of-type(2) {
+      /* @apply ; */
+    }
+
+    span:nth-of-type(3) {
+      @apply font-thin;
+    }
+
+    --lines: 0.085rem;
+    mask: repeating-radial-gradient(
+      circle at 1.23rem 4.5rem,
+      #000,
+      var(--lines),
+      #000,
+      0,
+      #0000,
+      calc(var(--lines) * 2),
+      #0000 0 /* trailing 0 is part of the hard stop logic */
+    );
+  }
+}
+
 main {
-  @apply max-w-lg h-full;
-}
+  @apply block max-w-xl h-full;
 
-header h1 {
-  @apply font-bold text-orange-500 text-5xl;
+  p {
+    @apply my-6 md:my-12 text-orange-500 text-5xl leading-13 md:leading-16;
 
-  span:nth-of-type(1) {
-    @apply block [word-spacing:-0.5rem] md:[word-spacing:-0.5rem];
-  }
-
-  span:nth-of-type(2) {
-    @apply font-normal;
-  }
-
-  --lines: 0.125rem;
-  mask: repeating-radial-gradient(
-    circle at 1.32rem 4.7rem,
-    #000,
-    var(--lines),
-    #000,
-    0,
-    #0000,
-    calc(var(--lines) * 2),
-    #0000 0 /* trailing 0 is part of the hard stop logic */
-  );
-}
-
-main p {
-  @apply my-6 md:my-12 text-orange-500 text-3xl leading-10 md:leading-12 tracking-wider;
-
-  > span {
-    @apply md:inline-block;
-
-    &:nth-of-type(1) {
-      @apply block;
+    span:nth-of-type(1) {
+      @apply italic;
+      font-family:
+        Iowan Old Style,
+        Apple Garamond,
+        Baskerville,
+        Times New Roman,
+        Droid Serif,
+        Times,
+        Source Serif Pro,
+        serif,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol;
     }
   }
 }
 
 footer {
-  @apply text-sky-300 text-3xl leading-10 md:leading-12 tracking-widest;
+  @apply text-3xl leading-10 md:leading-12;
+
+  * {
+    @apply hover:text-orange-300;
+  }
 
   p::after {
-    @apply inline-block bg-current ml-2 w-10 h-10 text-orange-500 mask-center mask-no-repeat mask-cover;
+    @apply inline-block bg-current ml-2 w-10 h-10 text-orange-400 -scale-x-90 mask-center mask-no-repeat mask-cover;
     content: "\0a0";
     mask-image: url(/eyehand.svg);
-    transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
   }
 
   a {
-    @apply bg-blue-100 text-sky-500 transition-all;
-
-    &:hover {
-      @apply bg-orange-500 text-white;
-    }
+    @apply text-orange-400 transition-all;
   }
 }
