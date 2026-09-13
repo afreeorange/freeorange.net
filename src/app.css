@@ -24,7 +24,8 @@
 html,
 body {
   @apply h-full overflow-auto;
-  background: #ddd;
+  background: #111;
+
   font-family:
     "Averta_", ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa,
     Manjari, "Arial Rounded MT", "Arial Rounded MT Bold", Calibri,
@@ -35,9 +36,13 @@ body {
   @apply flex flex-col justify-between p-10 md:p-20 xl:p-40 h-full;
 
   &::before {
-    @apply top-0 left-0 -z-10 absolute opacity-80 w-screen h-screen;
+    @apply top-0 left-0 absolute opacity-2 w-screen h-screen;
     content: "\0a0";
     background: url(/noise.webp) repeat;
+  }
+
+  > * {
+    @apply z-10;
   }
 }
 
