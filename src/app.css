@@ -50,11 +50,11 @@ header {
     }
 
     span:nth-of-type(2) {
-      /* @apply ; */
+      @apply uppercase;
     }
 
     span:nth-of-type(3) {
-      @apply font-thin;
+      @apply font-thin text-3xl;
     }
 
     --lines: 0.085rem;
@@ -103,7 +103,7 @@ footer {
   }
 
   p::after {
-    @apply inline-block bg-current ml-2 w-10 h-10 text-orange-400 -scale-x-90 mask-center mask-no-repeat mask-cover;
+    @apply inline-block bg-current ml-2 size-9 text-orange-400 -scale-x-90 mask-center mask-no-repeat mask-cover;
     content: "\0a0";
     mask-image: url(/eyehand.svg);
   }
