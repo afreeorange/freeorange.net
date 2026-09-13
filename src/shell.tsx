@@ -35,13 +35,6 @@ const Shell = ({ children }: { children?: ComponentChildren }) => (
       <meta property="og:url" content={URI} />
       <meta property="og:locale" content="en_US" />
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:description" content={DESCRIPTION} />
-      <meta name="twitter:image" content="/og-image.png" />
-      <meta name="twitter:title" content={TITLE} />
-      <meta property="twitter:domain" content={DOMAIN} />
-      <meta property="twitter:url" content={URI} />
-
       <title dangerouslySetInnerHTML={{ __html: TITLE }} />
 
       <link rel="apple-touch-icon" type="image/png" href="/favicon.png" />
@@ -51,10 +44,14 @@ const Shell = ({ children }: { children?: ComponentChildren }) => (
 
       <script
         async
-        defer
-        data-domain={URI}
-        src="https://plausible.io/js/plausible.js"
-      />
+        src="https://plausible.io/js/pa-FN6UUGi3Wni9z3BRFRdQv.js"
+      ></script>
+      <script>
+        window.plausible=window.plausible||function()
+        {(plausible.q = plausible.q || []).push(arguments)}
+        ,plausible.init=plausible.init||function(i){(plausible.o = i || {})};
+        plausible.init()
+      </script>
     </head>
     <body>
       <div id="container">{children}</div>

@@ -9,7 +9,7 @@
     "build": "CI=true tsx ./scripts/build.tsx",
     "check": "biome check",
     "fix": "biome check --fix",
-    "deploy": "bash ./scripts/deploy.sh",
+    "deploy": "echo 'See CircleCI'",
     "preview": "vite preview"
   },
   "dependencies": {
