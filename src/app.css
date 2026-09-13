@@ -43,7 +43,7 @@ body {
 
 header {
   h1 {
-    @apply pb-1 font-bold text-orange-500 text-5xl;
+    @apply pb-1 font-bold text-orange-600 text-5xl;
 
     span:nth-of-type(1) {
       @apply block ml-1 font-normal [word-spacing:-0.5rem] md:[word-spacing:-0.5rem];
@@ -75,9 +75,28 @@ main {
   @apply block max-w-xl h-full;
 
   p {
-    @apply my-6 md:my-12 text-orange-500 text-5xl leading-13 md:leading-16;
+    @apply my-6 md:my-12 text-orange-500 text-2xl;
 
-    span:nth-of-type(1) {
+    strong {
+      /* @apply text-orange-600; */
+    }
+
+    strong:nth-of-type(1)::after {
+      @apply block;
+      content: "";
+    }
+
+    strong:nth-of-type(2)::before {
+      @apply block;
+      content: "";
+    }
+
+    strong:nth-of-type(3)::before {
+      @apply block;
+      content: "";
+    }
+
+    em {
       @apply italic;
       font-family:
         Iowan Old Style,
@@ -96,19 +115,19 @@ main {
 }
 
 footer {
-  @apply text-3xl leading-10 md:leading-12;
+  @apply text-2xl leading-10 md:leading-12;
 
   * {
-    @apply hover:text-orange-300;
+    @apply hover:text-orange-600;
   }
 
   p::after {
-    @apply inline-block bg-current ml-2 size-9 text-orange-400 -scale-x-90 mask-center mask-no-repeat mask-cover;
+    @apply inline-block bg-current ml-2 size-6 text-orange-400 leading-7 -scale-x-90 mask-center mask-no-repeat mask-cover;
     content: "\0a0";
     mask-image: url(/eyehand.svg);
   }
 
   a {
-    @apply text-orange-400 transition-all;
+    @apply text-orange-400 underline underline-offset-4 transition-all;
   }
 }

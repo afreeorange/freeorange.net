@@ -7,8 +7,8 @@ const App = () => (
     </header>
     <main>
       <p>
-        is a <strong>full-stack consultancy</strong> based in
-        <br /> <strong>Des Moines</strong> <span>&amp;</span> <br />
+        is a <strong>full-stack consultancy</strong> based in{" "}
+        <strong>Des Moines</strong> <em>&amp;</em>{" "}
         <strong>New York City</strong>.
       </p>
     </main>
