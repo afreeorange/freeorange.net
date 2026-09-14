@@ -23,8 +23,7 @@
 
 html,
 body {
-  @apply h-full overflow-auto;
-  background: #111;
+  @apply bg-yellow-400 h-full overflow-auto;
 
   font-family:
     "Averta_", ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa,
@@ -120,14 +119,14 @@ main {
 }
 
 footer {
-  @apply text-2xl leading-10 md:leading-12;
+  @apply text-lg leading-10 md:leading-12;
 
   * {
     @apply hover:text-orange-600;
   }
 
   p::after {
-    @apply inline-block bg-current ml-2 size-6 text-orange-400 leading-7 -scale-x-90 mask-center mask-no-repeat mask-cover;
+    @apply inline-block bg-current ml-2 size-5 text-orange-400 leading-5 -scale-x-90 mask-center mask-no-repeat mask-cover;
     content: "\0a0";
     mask-image: url(/eyehand.svg);
   }
